@@ -1,0 +1,3 @@
+[submodule "molyuuos-customizations"]
+	path = molyuuos-customizations
+	url = https://github.com/MolyuuOS/molyuuos-customizations.git

@@ -1,0 +1,27 @@
+# Maintainer: bigsaltyfishes <bigsaltyfishes@gmail.com>
+
+pkgname=molyuu-updater
+_gitdir="molyuu-updater"
+pkgver=1.0.0
+pkgrel=1
+branch="main"
+pkgdesc="MolyuuOS Updater is used to update MolyuuOS in SteamOS session."
+arch=('x86_64')
+url="https://github.com/MolyuuOS/molyuu-updater"
+license=('MIT')
+depends=('pacman' 'pacman-contrib')
+makedepends=('rust')
+source=("${_gitdir}::git+https://github.com/MolyuuOS/molyuu-updater.git")
+sha256sums=('SKIP')  # You need to replace this with the actual checksum
+
+build() {
+    cd "$srcdir/${_gitdir}"
+    cargo build --release --locked
+}
+
+package() {
+    cd "$srcdir/${_gitdir}"
+    install -Dm755 "target/release/molyuu-updater" "$pkgdir/usr/bin/molyuu-updater"
+}
+
+# vim:set ts=2 sw=2 et:

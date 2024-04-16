@@ -1,27 +1,27 @@
 # Maintainer: bigsaltyfishes <bigsaltyfishes@gmail.com>
 
 pkgname=molyuuctl
+_gitdir="molyuuctl"
 pkgver=1.0.0
 pkgrel=1
-branch="main"
 pkgdesc="Molyuu Controller is used to manage and register available sessions in the system. It supports X.org and Wayland environments. All sessions are accessed through registered aliases. This project is used to replace the complex session selection script in SteamOS and facilitate users to change the desktop environment by themselves."
 arch=('x86_64')
 url="https://github.com/MolyuuOS/molyuuctl"
 license=('MIT')
-depends=('dbus' 'systemd' 'gcc-libs' 'bash')
+depends=('dbus' 'systemd' 'gcc-libs' 'bash' 'polkit')
 optdepends=('sddm: Display manager (required if using sddm)'
             'lightdm: Display manager (required if using lightdm)')
 makedepends=('rust')
-source=("https://github.com/MolyuuOS/molyuuctl/archive/refs/heads/$branch.zip")
+source=("${_gitdir}::git+https://github.com/MolyuuOS/${_gitdir}.git")
 sha256sums=('SKIP')  # You need to replace this with the actual checksum
 
 build() {
-    cd "$srcdir/molyuuctl-$branch"
+    cd "$srcdir/${_gitdir}"
     cargo build --release --locked
 }
 
 package() {
-    cd "$srcdir/molyuuctl-$branch"
+    cd "$srcdir/${_gitdir}"
     install -Dm755 "target/release/molyuuctl" "$pkgdir/usr/bin/molyuuctl"
 
     # Setting capabilities
