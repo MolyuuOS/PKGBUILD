@@ -6,12 +6,12 @@ die() { echo >&2 "!! $*"; exit 1; }
 
 MOLYUU_CONTROLLER_PATH="/usr/bin/molyuuctl"
 
-if [[ $EUID == 0 ]]; then
-    die "Running $0 as root is not allowed"
-fi
-
 if [[ ! -f "$MOLYUU_CONTROLLER_PATH" ]]; then
     die "Molyuu controller not found at $MOLYUU_CONTROLLER_PATH"
+fi
+
+if [[ $EUID != 0 ]]; then
+    exec pkexec "$(realpath $0)" "$1"
 fi
 
 "$MOLYUU_CONTROLLER_PATH" session set-oneshot "$1"

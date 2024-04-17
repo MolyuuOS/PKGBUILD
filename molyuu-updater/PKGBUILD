@@ -20,6 +20,12 @@ build() {
 }
 
 package() {
+    # Install scripts
+    cp -rv "$startdir/rootfs/"* "$pkgdir/"
+    chmod 755 "$pkgdir/usr/lib/os-branch-select"
+    chmod 755 "$pkgdir/usr/bin/"*
+    chmod 755 "$pkgdir/usr/bin/steamos-polkit-helpers/"*
+
     cd "$srcdir/${_gitdir}"
     install -Dm755 "target/release/molyuu-updater" "$pkgdir/usr/bin/molyuu-updater"
 }
