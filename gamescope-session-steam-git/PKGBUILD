@@ -26,9 +26,9 @@ package() {
 	cd "$srcdir/${_gitdir}"
 
 	# Some of the files are not needed and are not packaged to avoid conflicts
-	install -Dm755 ${srcdir}/${_gitdir}/usr/bin/steam-http-loader ${pkgdir}/usr/bin/steam-http-loader
 	cp -rv ${srcdir}/${_gitdir}/usr/share ${pkgdir}/usr/share
 	rm -rf ${pkgdir}/usr/share/polkit-1
+	rm -rf ${pkgdir}/usr/share/applications
 	install -Dm644 ${srcdir}/${_gitdir}/LICENSE ${pkgdir}/usr/share/licenses/${_gitdir}/LICENSE
 
 	# font workaround for initial big picture mode startup
