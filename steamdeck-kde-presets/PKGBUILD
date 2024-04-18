@@ -16,6 +16,9 @@ sha512sums=(SKIP)
 package() {
   cp -R "$srcdir"/steamdeck-kde-presets/* "$pkgdir"
 
+  # Plasma 6 Support
+  install -Dm644 "$startdir/powerdevilrc" "$pkgdir/etc/xdg/powerdevilrc"
+
   # Remove kcm-about-distrorc
   # We don't have /usr/bin/steamos-partition
   rm "$pkgdir/etc/xdg/kcm-about-distrorc"
