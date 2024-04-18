@@ -24,6 +24,7 @@ pkgver() {
 
 package() {
 	cd "$srcdir/${_gitdir}"
+	mkdir -p ${pkgdir}/usr
 
 	# Some of the files are not needed and are not packaged to avoid conflicts
 	cp -rv ${srcdir}/${_gitdir}/usr/share ${pkgdir}/usr/share
