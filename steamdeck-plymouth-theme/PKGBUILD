@@ -1,0 +1,23 @@
+# Maintainer: bigsaltyfishes <bigsaltyfishes@gmail.com>
+
+pkgname=steamdeck-plymouth-theme
+_srctag=jupiter-20240416.1
+_srcver=${_srctag#jupiter-}
+pkgver=${_srcver//-/.}
+_gitdir=jupiter-hw-support
+pkgrel=1
+branch="main"
+pkgdesc="Steam Deck plymouth themes from jupiter-hw-support"
+arch=('x86_64')
+url="https://github.com/MolyuuOS/PKGBUILD"
+source=("${_gitdir}::git+https://gitlab.com/evlaV/${_gitdir}.git#tag=${_srctag}")
+md5sums=('SKIP')
+license=('MIT')
+
+package() {
+    # Install Plymouth Theme
+    mkdir -p "${pkgdir}/usr/share"
+    cp -rv "${srcdir}/${_gitdir}/usr/share/plymouth" "${pkgdir}/usr/share/"
+}
+
+# vim:set ts=2 sw=2 et:
