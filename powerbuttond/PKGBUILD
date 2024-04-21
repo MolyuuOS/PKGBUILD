@@ -1,0 +1,29 @@
+# Maintainer: bigsaltyfishes <bigsaltyfishes@gmail.com>
+
+pkgname=powerbuttond
+_gitdir="powerbuttond"
+pkgver=1.0.0
+pkgrel=1
+branch="main"
+pkgdesc="MolyuuOS Power Button Daemon is a replacement of SteamOS powerbuttond"
+arch=('x86_64')
+url="https://github.com/MolyuuOS/powerbuttond"
+license=('MIT')
+makedepends=('rust')
+source=("${_gitdir}::git+https://github.com/MolyuuOS/powerbuttond.git")
+sha256sums=('SKIP')  # You need to replace this with the actual checksum
+
+build() {
+    cd "$srcdir/${_gitdir}"
+    cargo build --release --locked
+}
+
+package() {
+    depends=('molyuuctl' 'steam')
+
+    cd "$srcdir/${_gitdir}"
+    install -Dm644 ${startdir}/molyuuos-powerbuttond.service "$pkgdir/usr/lib/systemd/system/molyuuos-powerbuttond.service"
+    install -Dm755 "target/release/powerbuttond" "$pkgdir/usr/lib/hwsupport/powerbuttond"
+}
+
+# vim:set ts=2 sw=2 et:
