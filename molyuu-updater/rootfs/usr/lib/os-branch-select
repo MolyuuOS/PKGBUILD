@@ -1,4 +1,4 @@
 #! /usr/bin/bash
 
-echo "MolyuuOS is a rolling distribution, no need for manual branch selection"
+echo "Rolling"
 exit 0
