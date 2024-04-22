@@ -1,0 +1,17 @@
+# Maintainer: bigsaltyfishes <bigsaltyfishes@gmail.com>
+
+pkgname=molyuuos-lightdm-presets
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="MolyuuOS lightdm presets - This package provides lightdm configurations for gamescope and steam support"
+arch=('x86_64')
+url="https://github.com/MolyuuOS/PKGBUILD"
+license=('MIT')
+
+package() {
+    depends=('lightdm' 'gamescope')
+    
+    install -Dm644 "${startdir}/molyuuos.conf" "${pkgdir}/etc/lightdm/lightdm.conf.d/molyuuos.conf"
+}
+
+# vim:set ts=2 sw=2 et:
