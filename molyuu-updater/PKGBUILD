@@ -3,7 +3,7 @@
 pkgname=molyuu-updater
 _gitdir="molyuu-updater"
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 branch="main"
 pkgdesc="MolyuuOS Updater is used to update MolyuuOS in SteamOS session."
 arch=('x86_64')
@@ -11,7 +11,7 @@ url="https://github.com/MolyuuOS/molyuu-updater"
 license=('MIT')
 depends=('pacman' 'pacman-contrib')
 makedepends=('rust')
-source=("${_gitdir}::git+https://github.com/MolyuuOS/molyuu-updater.git")
+source=("${_gitdir}::git+https://github.com/MolyuuOS/molyuu-updater.git#tag=v$pkgver")
 sha256sums=('SKIP')  # You need to replace this with the actual checksum
 
 build() {
