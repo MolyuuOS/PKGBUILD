@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://github.com/MolyuuOS/powerbuttond"
 license=('MIT')
 makedepends=('rust')
-source=("${_gitdir}::git+https://github.com/MolyuuOS/powerbuttond.git")
+source=("${_gitdir}::git+https://github.com/MolyuuOS/powerbuttond.git#tag=v$pkgver")
 sha256sums=('SKIP')  # You need to replace this with the actual checksum
 
 build() {

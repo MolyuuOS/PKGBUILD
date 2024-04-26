@@ -13,7 +13,7 @@ optdepends=('sddm: Display manager (required if using sddm)'
             'lightdm: Display manager (required if using lightdm)')
 backup=(etc/molyuuctl/config.toml)
 makedepends=('rust')
-source=("${_gitdir}::git+https://github.com/MolyuuOS/${_gitdir}.git")
+source=("${_gitdir}::git+https://github.com/MolyuuOS/${_gitdir}.git#tag=v$pkgver")
 sha256sums=('SKIP')  # You need to replace this with the actual checksum
 
 build() {
